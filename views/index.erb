@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="swayy">
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title><%= @title %></title>
+    <meta name="description" content='<%= @description %>'>
+
+    <!-- mobile meta -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="google-site-verification" content="Ah7MowuVh6bbHkIdgWNqOX4T-YCwFiHHk2ErGn8Rhv0" />
+
+    <base href="/">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Google maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiLYykgOsbNwdWEI8vMtFNAaEvt4s2mDc&libraries=places" type="text/javascript"></script>
+
+    <!--[if IE]>
+      <link rel="shortcut icon" href="favicon.ico">
+    <![endif]-->
+    <!-- or, set /favicon.ico for IE10 win -->
+    <meta name="msapplication-TileColor" content="#f01d4f">
+
+    <!-- CSS -->
+
+    <!-- build:cssLibs css/libs.min.css -->
+    <!-- endbuild -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-91302421-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </head>
+  <body ng-controller="UserController" ng-class=" currentUser() ? 'inner_pages_body' : 'public_page_body'">
+    <div class="loader-wrapper" ng-class=" showDownload ? '' : 'hidden'">
+      <div class="loader"></div>
+    </div>
+
+
+      <!-- build:cssApplicationOld css/application-old.min.css-->
+      <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+      <link rel="stylesheet" href="../app/styles/application.css">
+
+
+    <div ng-if="currentUser()">
+      <link rel="stylesheet" href="../bower_components/angular-ui-select/dist/select.min.css">
+      <link rel="stylesheet" href="../bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+      <link rel="stylesheet" href="../lib/emoji-picker/css/nanoscroller.css" >
+      <link rel="stylesheet" href="../lib/emoji-picker/css/emoji.css" >
+      <!-- endbuild -->
+    </div>
+
+    <div ng-if="!currentUser()">
+      <!-- build:cssApplicationNew css/application-new.min.css-->
+<!--       <link rel="stylesheet" href="app/styles/static_pages/application.css"> -->
+      <link rel="stylesheet" href="../bower_components/video.js/dist/video-js.css" />
+      <!-- endbuild -->
+    </div>
+    <div ng-init="getUser()">
+      <div class="page-wrapper" >
+        <div ng-controller="AdsController">
+
+          <!-- content will be rendered here -->
+          <main ui-view=""></main>
+
+        </div>
+      </div>
+
+
+      <swayy-footer data="currentUser()" ng-hide-method="footerIsHidden()"></swayy-footer>
+    </div>
+
+    <!--SVG icon-->
+    <?xml version="1.0" standalone="no"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve" width="0" height="0" class="hidden">
+
+      <filter id="blur">
+        <feGaussianBlur stdDeviation="3" />
+      </filter>
+
+      <path id="menu-bars" fill="" d="M143,145H52.9c-3.9,0-7-3.1-7-7s3.1-7,7-7H143c3.9,0,7,3.1,7,7S146.9,145,143,145z M150,65c0-3.9-3.1-7-7-7
+      H52.9c-3.9,0-7,3.1-7,7s3.1,7,7,7H143C146.9,72,150,68.9,150,65z M150,101.5c0-3.9-3.1-7-7-7H52.9c-3.9,0-7,3.1-7,7s3.1,7,7,7H143
+      C146.9,108.5,150,105.4,150,101.5z"/>
+
+      <path id="reject" fill="" d="M143.9,136.5l-35-34.7l34.7-35c2.7-2.7,2.7-7.2,0-9.9c-2.7-2.7-7.2-2.7-9.9,0l-34.7,35l-35-34.7
+      c-2.7-2.7-7.2-2.7-9.9,0c-2.7,2.7-2.7,7.2,0,9.9l35,34.7l-34.7,35c-2.7,2.7-2.7,7.2,0,9.9c1.4,1.4,3.1,2,4.9,2c1.8,0,3.6-0.7,5-2.1
+      l34.7-35l35,34.7c1.4,1.4,3.1,2,4.9,2c1.8,0,3.6-0.7,5-2.1C146.7,143.7,146.6,139.2,143.9,136.5z"/>
+
+      <path id="smile" fill="" d="M100.7,36.8C66,36.8,37.8,65,37.8,99.7c0,34.6,28.2,62.8,62.8,62.8c34.6,0,62.8-28.2,62.8-62.8
+      C163.5,65,135.3,36.8,100.7,36.8z M100.7,153.5c-29.7,0-53.8-24.1-53.8-53.8c0-29.7,24.1-53.8,53.8-53.8c29.7,0,53.8,24.1,53.8,53.8
+      C154.5,129.4,130.4,153.5,100.7,153.5z M73.5,86c0-4,3.2-7.2,7.2-7.2s7.2,3.2,7.2,7.2s-3.2,7.2-7.2,7.2S73.5,90,73.5,86z M111.5,86
+      c0-4,3.2-7.2,7.2-7.2c4,0,7.2,3.2,7.2,7.2s-3.2,7.2-7.2,7.2C114.7,93.2,111.5,90,111.5,86z M136.5,119c-0.4,0.9-9,22.2-35.6,22.2
+      c-0.2,0-0.5,0-0.7,0c-26.8-0.4-36.6-20-37-20.9c-1.1-2.2-0.1-4.9,2.1-6c2.2-1.1,4.9-0.1,6,2.1c0.3,0.6,7.9,15.5,29,15.8
+      c0.2,0,0.4,0,0.5,0c20.3,0,26.9-15.8,27.2-16.5c0.9-2.3,3.5-3.4,5.8-2.5C136.3,114.1,137.4,116.7,136.5,119z"/>
+
+
+      <!-- Tick for modal-->
+      <path id="tick" fill="" d="M86.1,144.2c0,0-0.1,0-0.1,0c-2,0-3.9-1-5.1-2.6L49.3,99.7c-2.2-2.9-1.6-6.9,1.3-9.1c2.9-2.2,6.9-1.6,9.1,1.3
+      l26.6,35.3l50.7-62c2.3-2.8,6.4-3.2,9.1-0.9c2.8,2.3,3.2,6.4,0.9,9.1l-55.9,68.4C89.9,143.3,88,144.2,86.1,144.2z"/>
+      <!-- end Tick for modal-->
+
+      <!--Advert controls icons-->
+      <path id="promote" fill="" d="M153.5,50.1c0-0.2,0-0.4,0.1-0.6c0-0.1,0-0.1,0-0.2c0-0.2,0-0.5-0.1-0.7c0,0,0-0.1,0-0.1c0-0.2-0.1-0.4-0.2-0.6
+      c0-0.1,0-0.1-0.1-0.2c-0.1-0.2-0.2-0.4-0.3-0.6c0,0,0,0-0.1-0.1c-0.1-0.2-0.3-0.3-0.4-0.5c0,0,0-0.1-0.1-0.1c0,0,0,0-0.1,0
+      c0,0-0.1-0.1-0.1-0.1c-0.1-0.1-0.3-0.2-0.5-0.3c0,0-0.1,0-0.1-0.1c-0.2-0.1-0.3-0.2-0.5-0.3c-0.1,0-0.1-0.1-0.2-0.1
+      c-0.2-0.1-0.4-0.1-0.6-0.2c0,0-0.1,0-0.1,0c-0.2,0-0.4,0-0.6-0.1c-0.1,0-0.1,0-0.2,0c-0.2,0-0.4,0-0.7,0.1c0,0-0.1,0-0.1,0
+      c-0.1,0-0.3,0.1-0.4,0.1l-45.4,15.2c-2.1,0.7-3.2,3-2.5,5.1c0.7,2.1,3,3.2,5.1,2.5l29.4-9.9l-91.4,92.2c-1.6,1.6-1.5,4.1,0,5.7
+      c0.8,0.8,1.8,1.2,2.8,1.2c1,0,2.1-0.4,2.8-1.2L142.8,62l-6.6,31.1c-0.5,2.2,0.9,4.3,3.1,4.7c0.3,0.1,0.6,0.1,0.8,0.1
+      c1.8,0,3.5-1.3,3.9-3.2l9.5-44.4c0,0,0,0,0-0.1C153.5,50.2,153.5,50.2,153.5,50.1z"/>
+
+      <path id="edit" fill="" d="M154.8,43.9c-3.9-3.9-9-6-14.5-6s-10.6,2.1-14.5,6l-5.3,5.3L48,121.6c-0.1,0.1-0.1,0.1-0.2,0.2
+      c-0.1,0.1-0.2,0.2-0.3,0.3c-0.1,0.1-0.1,0.2-0.2,0.3c-0.1,0.1-0.1,0.2-0.2,0.3c-0.1,0.1-0.1,0.3-0.2,0.4c0,0.1-0.1,0.2-0.1,0.2
+      l-7.4,30.6c-0.3,1.4,0.1,2.8,1.1,3.8c0.8,0.8,1.8,1.2,2.8,1.2c0.3,0,0.6,0,0.9-0.1l29.7-7.2c0,0,0,0,0.1,0c1.1,0,2.1-0.4,2.8-1.2
+      l72.5-72.5l5.3-5.3C162.7,64.9,162.7,51.9,154.8,43.9z M53,132.3l13.1,13.1l-17.3,4.2L53,132.3z M74.1,142.2l-17.7-17.7l66.8-66.8
+      l1.7,1.7l16,16L74.1,142.2z M149.1,67.2l-2.5,2.5l-1.7-1.7l-16-16l2.5-2.5c2.4-2.4,5.5-3.7,8.8-3.7s6.5,1.3,8.8,3.7
+      C154,54.4,154,62.3,149.1,67.2z"/>
+
+      <path id="delete" fill="" d="M157.1,65c-0.3-12.2-12.9-21.8-28.6-21.8h-24.2c0-2.6,0-4.9-0.1-6.7c-0.1-3-0.1-6.8-4.2-6.8
+      c-4,0-4.1,3.8-4.1,6.8c0,1.7-0.1,4.1-0.1,6.7H71.6C55.9,43.3,43.3,52.8,43,65l-0.2,6.6c0,1.1,0.4,2.1,1.1,2.9
+      c0.8,0.8,1.8,1.2,2.9,1.2H50l9.4,87.1c0.2,2,1.9,3.6,4,3.6h73.4c2,0,3.8-1.5,4-3.6l9.4-87.1h3.1c1.1,0,2.1-0.4,2.9-1.2
+      s1.2-1.8,1.1-2.9L157.1,65z M51,65.2c0.2-7.7,9.4-14,20.6-14h56.9c11.2,0,20.4,6.3,20.6,14l0.1,2.5h-2.6H53.6H51L51,65.2z
+       M112.4,75.8l-4.1,82.7H91.8l-4.1-82.7H112.4z M58.1,75.8h21.7l4.1,82.7H67L58.1,75.8z M133.2,158.5h-16.9l4.1-82.7h21.7
+      L133.2,158.5z"/>
+
+      <path id="preview" fill="" d="M185.4,97.1l-23.1-23.1c-16.5-16.5-38.6-25.7-62-25.7s-45.4,9.1-62,25.7L14.8,97.4c-1.6,1.6-1.6,4.1,0,5.7
+      l23.1,23.1c16.5,16.5,38.6,25.7,62,25.7s45.4-9.1,62-25.7l23.5-23.5C186.9,101.2,186.9,98.6,185.4,97.1z M99.5,139
+      c-20.5,0-37.2-17.4-37.2-38.7c0-21.3,16.7-38.7,37.2-38.7s37.2,17.4,37.2,38.7C136.7,121.6,120,139,99.5,139z M23.3,100.3L44,79.6
+      c9.5-9.5,20.9-16.2,33.3-20c-13.7,8-23,23.2-23,40.7c0,17,8.8,31.9,21.9,40c-12.2-3.8-23.3-10.5-32.6-19.7L23.3,100.3z M156.2,120.6
+      c-9.7,9.7-21.5,16.6-34.3,20.2c13.6-8.1,22.8-23.2,22.8-40.5c0-18.1-10-33.8-24.6-41.5c13.7,3.5,26.2,10.6,36.5,20.8l20.3,20.3
+      L156.2,120.6z M99.5,76.9c-12.5,0-22.7,10.5-22.7,23.4c0,12.9,10.2,23.4,22.7,23.4c12.5,0,22.7-10.5,22.7-23.4
+      C122.2,87.4,112,76.9,99.5,76.9z M99.5,115.7c-8.1,0-14.7-6.9-14.7-15.4c0-8.5,6.6-15.4,14.7-15.4c8.1,0,14.7,6.9,14.7,15.4
+      C114.2,108.8,107.6,115.7,99.5,115.7z"/>
+
+      <path id="booking" fill="" d="M113,154H87c-22.6,0-41-18.4-41-41V87c0-22.6,18.4-41,41-41h26c6.3,0,12.3,1.4,17.9,4.1c2,1,2.8,3.4,1.8,5.3
+      s-3.4,2.8-5.3,1.9C122.9,55.1,118,54,113,54H87c-18.2,0-33,14.8-33,33v26c0,18.2,14.8,33,33,33h26c18.2,0,33-14.8,33-33V87
+      c0-4.2-0.8-8.2-2.3-12c-0.8-2.1,0.2-4.4,2.3-5.2c2.1-0.8,4.4,0.2,5.2,2.3c1.9,4.8,2.8,9.8,2.8,14.9v26C154,135.6,135.6,154,113,154z
+       M103.4,126.1l47-74c1.2-1.9,0.6-4.3-1.2-5.5c-1.9-1.2-4.3-0.6-5.5,1.2L100,116.5L83.4,89.9c-1.2-1.9-3.6-2.4-5.5-1.3
+      c-1.9,1.2-2.4,3.6-1.3,5.5l20,32c0.7,1.2,2,1.9,3.4,1.9c0,0,0,0,0,0C101.4,128,102.6,127.3,103.4,126.1z"/>
+
+      <path id="details" fill="" d="M76.5,55H49c-2.2,0-4-1.8-4-4s1.8-4,4-4h27.5c2.2,0,4,1.8,4,4S78.7,55,76.5,55z M145.4,51c0-2.2-1.8-4-4-4H92.3
+      c-2.2,0-4,1.8-4,4s1.8,4,4,4h49.1C143.6,55,145.4,53.2,145.4,51z M70.7,74.8c0-2.2-1.8-4-4-4H49c-2.2,0-4,1.8-4,4s1.8,4,4,4h17.7
+      C68.9,78.8,70.7,77,70.7,74.8z M154,74.8c0-2.2-1.8-4-4-4H92.3c-2.2,0-4,1.8-4,4s1.8,4,4,4H150C152.2,78.8,154,77,154,74.8z
+       M154,98.5c0-2.2-1.8-4-4-4H92.3c-2.2,0-4,1.8-4,4s1.8,4,4,4H150C152.2,102.5,154,100.7,154,98.5z M66.7,98.5c0-2.2-1.8-4-4-4H49
+      c-2.2,0-4,1.8-4,4s1.8,4,4,4h13.7C64.9,102.5,66.7,100.7,66.7,98.5z M136.7,122.3c0-2.2-1.8-4-4-4H92.3c-2.2,0-4,1.8-4,4s1.8,4,4,4
+      h40.5C134.9,126.3,136.7,124.5,136.7,122.3z M69.4,122.3c0-2.2-1.8-4-4-4H49c-2.2,0-4,1.8-4,4s1.8,4,4,4h16.4
+      C67.6,126.3,69.4,124.5,69.4,122.3z M67.5,146c0-2.2-1.8-4-4-4H49c-2.2,0-4,1.8-4,4s1.8,4,4,4h14.5C65.8,150,67.5,148.2,67.5,146z
+       M154,146c0-2.2-1.8-4-4-4H92.3c-2.2,0-4,1.8-4,4s1.8,4,4,4H150C152.2,150,154,148.2,154,146z M67.5,146c0-2.2-1.8-4-4-4H49
+      c-2.2,0-4,1.8-4,4s1.8,4,4,4h14.5C65.8,150,67.5,148.2,67.5,146z"/>
+      <!-- end Advert controls icons-->
+
+      <!-- Social icons-->
+      <path id="home-page" fill="" d="M157.4,94.2c2.2,2.2,2.2,5.6,0,7.6c-1,1-2.2,1.5-3.7,1.5s-2.7-0.5-3.7-1.5L100,51.7l-50.1,50.1
+      c-2,2.2-5.4,2.2-7.6,0c-2.2-2-2.2-5.4,0-7.6l54-53.7c1-1,2.2-1.5,3.7-1.5s2.7,0.5,3.7,1.5L157.4,94.2z M137.1,97.9
+      c2.9,0,5.1,2.4,5.1,5.4v51.1c0,2.9-2.2,5.4-5.1,5.4h-24.4c-2.9,0-5.4-2.4-5.4-5.4v-32.2H92.4v32.2c0,2.9-2.2,5.4-5.1,5.4H62.9
+      c-2.9,0-5.4-2.4-5.4-5.4v-51.1c0-2.9,2.4-5.4,5.4-5.4c2.9,0,5.4,2.4,5.4,5.4v45.9h13.7v-32.5c0-2.9,2.4-5.4,5.4-5.4h25.4
+      c2.9,0,5.4,2.4,5.4,5.4v32.5h13.7v-45.9C131.8,100.3,134.2,97.9,137.1,97.9L137.1,97.9z"/>
+
+      <path id="instagram" fill="" d="M123.2,41H75.7c-19.3,0-35,15.7-35,35v47.5c0,19.3,15.7,35,35,35h47.5c19.3,0,35-15.7,35-35V76
+      C158.2,56.7,142.5,41,123.2,41L123.2,41z M146.3,123.5c0,12.8-10.4,23.2-23.2,23.2H75.7c-12.8,0-23.2-10.4-23.2-23.2V76
+      c0-12.8,10.4-23.2,23.2-23.2h47.5c12.8,0,23.2,10.4,23.2,23.2V123.5z M146.3,123.5 M99.4,69.4c-16.8,0-30.4,13.6-30.4,30.4
+      c0,16.8,13.6,30.4,30.4,30.4s30.4-13.6,30.4-30.4S116.2,69.4,99.4,69.4L99.4,69.4z M99.4,118.3c-10.3,0-18.6-8.3-18.6-18.6
+      c0-10.3,8.3-18.6,18.6-18.6c10.3,0,18.6,8.3,18.6,18.6C118,110,109.7,118.3,99.4,118.3L99.4,118.3z M99.4,118.3 M137.2,69.6
+      c0,4-3.3,7.3-7.3,7.3c-4,0-7.3-3.3-7.3-7.3c0-4,3.3-7.3,7.3-7.3C133.9,62.3,137.2,65.6,137.2,69.6L137.2,69.6z M137.2,69.6"/>
+
+      <g id="periscope">
+        <path fill="" d="M100.2,47.5c-23.6,0-42.7,19.1-42.7,42.7c0,28,34.7,65.9,42.7,65.9c8,0,42.7-36.8,42.7-65.9
+          C142.9,66.6,123.8,47.5,100.2,47.5L100.2,47.5z M100,122.1c-16.8,0-30.4-13.6-30.4-30.4S83.2,61.4,100,61.4
+          c16.8,0,30.4,13.6,30.4,30.4S116.8,122.1,100,122.1L100,122.1z M100,122.1"/>
+        <path fill="" d="M100,67.2c-0.8,0-1.5,0-2.2,0.1c1.8,2.1,2.9,4.8,2.9,7.8c0,6.6-5.3,11.9-11.9,11.9c-4.6,0-8.6-2.6-10.6-6.4
+          c-1.7,3.3-2.7,7.1-2.7,11.1c0,13.5,11,24.5,24.5,24.5c13.5,0,24.5-11,24.5-24.5C124.5,78.2,113.5,67.2,100,67.2L100,67.2z
+           M100,67.2"/>
+      </g>
+
+      <path id="snapchat" fill="" d="M100.3,51.2c15.6,0,28.5,13,28.6,28.6c0,3.7,0.1,7,0.3,10.1c0.1,1.9,1.7,3.3,3.5,3.3c0.3,0,0.5,0,0.8-0.1
+        l4.9-1.1c0.2,0,0.4-0.1,0.6-0.1c1.2,0,2.4,0.8,2.7,2.1c0.4,1.8-0.6,3.6-2.3,4.2l-7.4,3c-1.9,0.8-2.9,2.8-2.3,4.7
+        c5.9,22,22.5,19.7,22.5,22.5c0,3.6-12.5,4.1-13.6,5.2c-1.1,1.1,0,6.6-2.6,7.7c-0.5,0.2-1.2,0.3-2,0.3c-1.9,0-4.6-0.4-7.4-0.4
+        c-2.5,0-5,0.3-7.3,1.3c-6,2.8-11.8,7.9-18.9,7.9c-7.2,0-12.9-5.2-18.9-7.9c-2.3-1-4.8-1.3-7.3-1.3c-2.8,0-5.5,0.4-7.4,0.4
+        c-0.8,0-1.5-0.1-2-0.3c-2.5-1.1-1.4-6.5-2.6-7.7c-1.1-1.1-13.6-1.6-13.6-5.2c0-2.9,16.6-0.6,22.5-22.5c0.5-1.9-0.5-4-2.3-4.7
+        l-7.4-3c-1.7-0.6-2.7-2.4-2.3-4.2c0.3-1.3,1.4-2.1,2.7-2.1c0.2,0,0.4,0,0.6,0.1l4.9,1.1c0.3,0.1,0.5,0.1,0.8,0.1
+        c1.8,0,3.4-1.4,3.5-3.3c0.2-3.1,0.3-6.5,0.3-10.1C71.8,64.2,84.7,51.2,100.3,51.2 M100.3,45L100.3,45c-4.7,0-9.2,0.9-13.5,2.8
+        c-4.1,1.8-7.8,4.3-11,7.5c-3.2,3.2-5.7,6.9-7.4,11c-1.8,4.3-2.8,8.8-2.8,13.5c0,2.3,0,4.5-0.1,6.6L63.7,86c-0.7-0.2-1.3-0.2-2-0.2
+        c-2,0-3.9,0.7-5.5,1.9c-1.6,1.3-2.8,3.1-3.2,5.1c-1.1,4.8,1.6,9.6,6.1,11.3l5.4,2.2c-3.6,11-10.2,13.2-14.7,14.6
+        c-1.2,0.4-2.2,0.7-3.2,1.2c-3.9,1.9-4.3,5.2-4.3,6.5c0,2.5,1.2,4.8,3.4,6.5c1.1,0.8,2.4,1.5,4.1,2.1c2.3,0.8,4.9,1.3,7.1,1.7
+        c0.1,0.8,0.3,1.6,0.5,2.5c1.1,3.6,3.3,5.2,5,5.9c1.6,0.7,3.3,0.8,4.4,0.8c1.1,0,2.2-0.1,3.4-0.2c1.3-0.1,2.7-0.2,4-0.2
+        c2.1,0,3.6,0.2,4.7,0.8c1.5,0.7,3.1,1.6,4.8,2.6c4.7,2.8,10,5.9,16.7,5.9c6.7,0,12-3.1,16.7-5.9c1.7-1,3.3-1.9,4.8-2.6
+        c1.1-0.5,2.6-0.8,4.7-0.8c1.3,0,2.7,0.1,4,0.2c1.2,0.1,2.4,0.2,3.4,0.2c1.1,0,2.8-0.1,4.4-0.8c1.7-0.7,3.9-2.3,5-5.9
+        c0.3-0.9,0.4-1.7,0.5-2.5c2.1-0.4,4.8-0.9,7.1-1.7c1.7-0.6,3-1.3,4.1-2.1c2.2-1.7,3.4-4,3.4-6.5c0-1.3-0.4-4.6-4.3-6.5
+        c-1-0.5-2-0.8-3.2-1.2c-4.5-1.4-11.1-3.5-14.7-14.6l5.4-2.2c4.6-1.7,7.2-6.5,6.1-11.3c-0.4-2-1.6-3.8-3.2-5.1
+        c-1.6-1.2-3.5-1.9-5.5-1.9c-0.7,0-1.4,0.1-2,0.2l-1.8,0.4c-0.1-2.1-0.1-4.3-0.1-6.6c0-4.7-0.9-9.2-2.8-13.5
+        c-1.8-4.1-4.3-7.8-7.5-11c-3.2-3.2-6.9-5.7-11-7.5C109.5,45.9,104.9,45,100.3,45L100.3,45z M100.3,45"/>
+
+      <path id="twitter" fill="" d="M198.1,131.5c8.2-0.7,13.7-4.4,15.9-9.5c-3,1.8-12.2,3.8-17.1,1.8c-0.3-1.1-0.6-2.3-0.9-3.4
+      c-3.8-14.2-17.1-25.7-30.9-24.2c1.1-0.4,2.3-0.9,3.4-1.3c1.6-0.6,10.5-2,9.1-5.1c-1.1-2.8-12.2,2.1-14.2,2.7c2.7-1,7.2-2.8,7.7-6
+      c-4.1,0.6-8.2,2.6-11.3,5.4c1.1-1.3,2-2.7,2.1-4.4c-11.1,7.1-17.6,21.4-22.8,35.3c-4.1-4-7.8-7.1-11.1-8.9
+      c-9.2-4.7-20.3-9.8-37.4-16.2c-0.6,5.7,2.8,13.3,12.5,18.4c-2.1-0.3-6,0.3-8.9,1.1c1.3,6.5,5.4,11.9,16.3,14.6
+      c-5.1,0.3-7.7,1.4-10.1,4c2.3,4.5,7.9,9.9,18,8.8c-11.2,4.8-4.5,13.7,4.5,12.5c-15.6,16-40.1,14.9-54.1,1.4
+      c36.7,50,116.6,29.6,128.5-18.6c8.9,0.1,14.2-3.1,17.4-6.5C209.6,134.1,202.1,133.1,198.1,131.5L198.1,131.5z"/>
+
+      <path id="facebook" fill="" d="M152,65.3c0-9.1-8.2-17.3-17.3-17.3H65.3C56.2,48,48,56.2,48,65.3v69.3c0,9.1,8.2,17.3,17.3,17.3H100v-39.3
+        H87.3V95.4H100v-6.8c0-11.6,8.7-22.1,19.5-22.1h14v17.3h-14c-1.5,0-3.3,1.9-3.3,4.6v6.9h17.3v17.3h-17.3V152h18.5
+        c9.1,0,17.3-8.2,17.3-17.3V65.3z M152,65.3"/>
+      <!-- end Social icons-->
+      <path id="sorted-arrows" fill="" d="M100.3,39l56,52h-112L100.3,39z M100.3,160.3l56-52h-112L100.3,160.3z"></path>
+
+      <path id="plus" fill="" d="M100,151.7c-2.2,0-4-1.8-4-4V104H52.3c-2.2,0-4-1.8-4-4s1.8-4,4-4H96V52.3c0-2.2,1.8-4,4-4s4,1.8,4,4V96
+        h43.7c2.2,0,4,1.8,4,4s-1.8,4-4,4H104v43.7C104,149.9,102.2,151.7,100,151.7z"></path>
+
+      <!-- Radio button-->
+      <circle id="radio-outer" fill="" stroke="" stroke-miterlimit="10" cx="8" cy="8" r="7"></circle>
+      <circle id="radio-inner" fill="" cx="8" cy="8" r="3.6"></circle>
+      <!-- -->
+
+      <!-- Checkbox -->
+      <path id="checkbox-square" fill="" stroke="" d="M11.5,1h-7C2.6,1,1,2.6,1,4.5v7 C1,13.4,2.6,15,4.5,15h7c1.9,0,3.5-1.6,3.5-3.5v-7C15,2.6,13.4,1,11.5,1L11.5,1z"></path>
+      <path id="checkbox-tick" fill="" d="M6.7,12C6.7,12,6.7,12,6.7,12c-0.3,0-0.6-0.1-0.7-0.3L2.8,8.2c-0.4-0.4-0.3-1,0.1-1.4c0.4-0.4,1-0.3,1.4,0.1 l2.5,2.7L12,4.2c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l-6.1,6.1C7.2,11.9,7,12,6.7,12z"></path>
+      <!-- -->
+
+      <path id="crown" fill="#FFF" d="M141.2 174.7C141.2 174.7 141.2 174.7 141.2 174.7H60.1c-1 0-1.9-0.4-2.5-1.1 -0.6-0.7-0.9-1.7-0.8-2.6 2.3-19.4-1.4-42.4-4.9-58.2 -3.8-17.2-8.3-29.9-8.3-30 -0.5-1.5 0-3.1 1.4-4 1.3-0.8 3-0.7 4.2 0.4l28.7 28.3 19.7-54.2c0.5-1.3 1.7-2.2 3.2-2.2 1.4 0 2.7 0.9 3.2 2.2l19.7 54.2 28.7-28.3c1.1-1.1 2.8-1.3 4.1-0.5 1.3 0.8 1.9 2.4 1.5 3.9 -0.1 0.5-14.8 47.9-13.3 88.3 0 0.1 0 0.3 0 0.4C144.6 173.2 143.1 174.7 141.2 174.7zM63.9 168h73.9c-0.5-28.4 6-58.7 10.3-75.1L124.6 116c-0.8 0.8-2 1.1-3.1 0.9 -1.1-0.3-2-1.1-2.4-2.1l-18.4-50.4 -18.4 50.4c-0.4 1.1-1.3 1.9-2.4 2.1 -1.1 0.3-2.3-0.1-3.1-0.9L53.9 93.5C58.8 110.5 66.1 141.4 63.9 168zM100.7 155.1c-3.4 0-6.6-1.3-9-3.7 -5-5-5-13 0-18 2.4-2.4 5.6-3.7 9-3.7 3.4 0 6.6 1.3 9 3.7 5 5 5 13 0 18C107.3 153.8 104.1 155.1 100.7 155.1zM100.7 136.4c-1.6 0-3.1 0.6-4.2 1.8 -2.3 2.3-2.3 6.1 0 8.5 1.1 1.1 2.6 1.8 4.2 1.8 1.6 0 3.1-0.6 4.2-1.8 2.3-2.3 2.3-6.1 0-8.5C103.8 137 102.3 136.4 100.7 136.4zM100.7 45.2c-5.5 0-10-4.5-10-10 0-5.5 4.5-10 10-10 5.5 0 10 4.5 10 10C110.7 40.8 106.2 45.2 100.7 45.2zM100.7 32c-1.8 0-3.3 1.5-3.3 3.3 0 1.8 1.5 3.3 3.3 3.3 1.8 0 3.3-1.5 3.3-3.3C104 33.4 102.5 32 100.7 32zM163.8 76c-5.5 0-10-4.5-10-10 0-5.5 4.5-10 10-10 5.5 0 10 4.5 10 10C173.8 71.5 169.3 76 163.8 76zM163.8 62.7c-1.8 0-3.3 1.5-3.3 3.3 0 1.8 1.5 3.3 3.3 3.3 1.8 0 3.3-1.5 3.3-3.3C167 64.2 165.6 62.7 163.8 62.7zM36.2 76c-5.5 0-10-4.5-10-10 0-5.5 4.5-10 10-10s10 4.5 10 10C46.2 71.5 41.7 76 36.2 76zM36.2 62.7c-1.8 0-3.3 1.5-3.3 3.3 0 1.8 1.5 3.3 3.3 3.3 1.8 0 3.3-1.5 3.3-3.3C39.5 64.2 38 62.7 36.2 62.7z"></path>
+
+      <path id="star" fill="" d="M407 800l131 353q7 19 17.5 19t17.5 -19l129 -353h421q21 0 24 -8.5t-14 -20.5l-342 -249l130 -401q7 -20 -0.5 -25.5t-24.5
+      6.5l-343 246l-342 -247q-17 -12 -24.5 -6.5t-0.5 25.5l130 400l-347 251q-17 12 -14 20.5t23 8.5h429z"></path>
+
+      <path id="star2" fill="" d="M134.6,157.3c-0.7,0-1.3-0.2-1.9-0.5l-32.7-18l-32.7,18c-1.4,0.7-3,0.6-4.3-0.3c-1.3-0.9-1.9-2.5-1.6-4
+      l7-36.7L41.2,90.3c-1.1-1.1-1.5-2.7-1.1-4.2c0.5-1.5,1.8-2.5,3.3-2.7l37-4.7L96.4,45c0.7-1.4,2.1-2.3,3.6-2.3s3,0.9,3.6,2.3
+      l15.9,33.8l37,4.7c1.5,0.2,2.8,1.3,3.3,2.7c0.5,1.5,0.1,3.1-1.1,4.2l-27.2,25.6l7,36.7c0.3,1.5-0.3,3.1-1.6,4
+      C136.3,157.1,135.5,157.3,134.6,157.3z M100,130.3c0.7,0,1.3,0.2,1.9,0.5l27.2,15l-5.8-30.5c-0.3-1.3,0.2-2.7,1.2-3.7l22.6-21.2
+      l-30.8-3.9c-1.4-0.2-2.5-1-3.1-2.3L100,56.1L86.8,84.2c-0.6,1.2-1.8,2.1-3.1,2.3l-30.8,3.9l22.6,21.2c1,0.9,1.4,2.3,1.2,3.7
+      l-5.8,30.5l27.2-15C98.7,130.4,99.3,130.3,100,130.3z"></path>
+
+      <path id="" fill="" d="M1100 1000v-850q0 -21 -14.5 -35.5t-35.5 -14.5h-150v400h-700v-400h-150q-21 0 -35.5 14.5t-14.5 35.5v1000q0
+      20 14.5 35t35.5 15h250v-300h500v300h100zM700 1000h-100v200h100v-200z"></path>
+
+        <path id="floppy-disk" fill="" d="M151.5,62.7l-12.7-12.6c-2-2-4.6-3-7.3-3h-0.9H69.4H55c-5.3,0-9.6,4.3-9.6,9.6v86.5c0,5.3,4.3,9.6,9.6,9.6
+      h8.7h72.7h8.7c5.3,0,9.6-4.3,9.6-9.6V70.2C154.6,67.4,153.5,64.7,151.5,62.7z M126.6,55.2v23.5c0,2.8-2.3,5.1-5.1,5.1h-43
+      c-2.8,0-5.1-2.3-5.1-5.1V55.2H126.6z M67.6,144.8v-29.6c0-2.3,3-4.4,6.5-4.4h51.8c3.4,0,6.5,2,6.5,4.4v29.6H67.6z M146.6,143.3
+      c0,0.9-0.7,1.6-1.6,1.6h-4.7v-29.6c0-6.8-6.5-12.4-14.5-12.4H74.1c-8,0-14.5,5.5-14.5,12.4v29.6H55c-0.9,0-1.6-0.7-1.6-1.6V56.7
+      c0-0.9,0.7-1.6,1.6-1.6h10.5v23.5c0,7.2,5.9,13.1,13.1,13.1h43c7.2,0,13.1-5.9,13.1-13.1V57.2l11.3,11.2c0.5,0.5,0.7,1.1,0.7,1.7
+      V143.3z M127.5,135c0,2.2-1.8,4-4,4H76.7c-2.2,0-4-1.8-4-4s1.8-4,4-4h46.7C125.7,131,127.5,132.8,127.5,135z M127.5,121.9
+      c0,2.2-1.8,4-4,4H76.7c-2.2,0-4-1.8-4-4s1.8-4,4-4h46.7C125.7,117.9,127.5,119.7,127.5,121.9z M110.8,75.2V64.5c0-2.2,1.8-4,4-4
+      s4,1.8,4,4v10.7c0,2.2-1.8,4-4,4S110.8,77.4,110.8,75.2z"></path>
+
+      <path id="arrow-menu-right" fill="" d="M83.7,158.7c-1.2,0-2.4-0.5-3.4-1.4c-1.9-1.9-1.9-4.9,0-6.7l50.6-50.6L80.3,49.4c-1.9-1.9-1.9-4.9,0-6.7
+      c1.9-1.9,4.9-1.9,6.7,0l54,54c0.9,0.9,1.4,2.1,1.4,3.4c0,1.3-0.5,2.5-1.4,3.4l-54,54C86.1,158.3,84.9,158.7,83.7,158.7z"></path>
+
+      <path id="calendar" fill="" d="M111.5,58.3H87.2c-2.6,0-4.8-2.1-4.8-4.8s2.1-4.8,4.8-4.8h24.3c2.6,0,4.8,2.1,4.8,4.8S114.1,58.3,111.5,58.3z
+       M164.2,136.9V66.7c0-9.9-8-17.9-17.9-17.9h-7.1c-2.6,0-4.8,2.1-4.8,4.8s2.1,4.8,4.8,4.8h7.1c4.6,0,8.4,3.8,8.4,8.4v70.3
+      c0,4.6-3.8,8.4-8.4,8.4H53.8c-4.6,0-8.4-3.8-8.4-8.4V66.7c0-4.6,3.8-8.4,8.4-8.4h6.7c2.6,0,4.8-2.1,4.8-4.8s-2.1-4.8-4.8-4.8h-6.7
+      c-9.9,0-17.9,8-17.9,17.9v70.3c0,9.9,8,17.9,17.9,17.9h92.5C156.1,154.9,164.2,146.8,164.2,136.9z M88.8,95V83.8
+      c0-2.6-2.1-4.8-4.8-4.8H63.5c-2.6,0-4.8,2.1-4.8,4.8V95c0,2.6,2.1,4.8,4.8,4.8h20.5C86.7,99.8,88.8,97.6,88.8,95z M68.3,88.6h11v1.7
+      h-11V88.6z M140,95V83.8c0-2.6-2.1-4.8-4.8-4.8h-20.5c-2.6,0-4.8,2.1-4.8,4.8V95c0,2.6,2.1,4.8,4.8,4.8h20.5
+      C137.9,99.8,140,97.6,140,95z M119.5,88.6h11v1.7h-11V88.6z M88.8,125.9v-11.2c0-2.6-2.1-4.8-4.8-4.8H63.5c-2.6,0-4.8,2.1-4.8,4.8
+      v11.2c0,2.6,2.1,4.8,4.8,4.8h20.5C86.7,130.7,88.8,128.6,88.8,125.9z M68.3,119.5h11v1.7h-11V119.5z M140,125.9v-11.2
+      c0-2.6-2.1-4.8-4.8-4.8h-20.5c-2.6,0-4.8,2.1-4.8,4.8v11.2c0,2.6,2.1,4.8,4.8,4.8h20.5C137.9,130.7,140,128.6,140,125.9z
+       M119.5,119.5h11v1.7h-11V119.5z M78.6,63.8V39.4c0-2.6-2.1-4.8-4.8-4.8S69,36.7,69,39.4v24.5c0,2.6,2.1,4.8,4.8,4.8
+      S78.6,66.5,78.6,63.8z M129.8,63.8V39.4c0-2.6-2.1-4.8-4.8-4.8c-2.6,0-4.8,2.1-4.8,4.8v24.5c0,2.6,2.1,4.8,4.8,4.8
+      C127.6,68.6,129.8,66.5,129.8,63.8z"/>
+    </svg>
+  </body>
+
+  <!-- Angular components -->
+  <!-- build:appcomponents js/appcomponents.js -->
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="../bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="../bower_components/angularjs-google-maps/build/scripts/ng-map.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <!-- <script src="bower_components/ng-maps/dist/map.js"></script> -->
+  <script src="../bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+
+  <script src="../bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="../bower_components/checklist-model/checklist-model.js"></script>
+  <script src="../bower_components/lodash/lodash.js"></script>
+  <script src="../bower_components/angular-truncate/src/truncate.js"></script>
+
+  <script src="../bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
+  <script src="../bower_components/angular-ui-select/dist/select.js"></script>
+  <script src="../bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
+
+
+  <script src="../bower_components/jQuery/dist/jquery.min.js"></script>
+  <script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+  <script src="../bower_components/pluralize/pluralize.js"></script>
+  <script src="../bower_components/humps/humps.js"></script>
+  <script src="../bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+
+  <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="../bower_components/angular-inline-text-editor/ite.js"></script>
+  <script src="../bower_components/rangy/rangy-core.min.js"></script>
+  <script src="../bower_components/rangy/rangy-selectionsaverestore.min.js"></script>
+  <script src="../bower_components/rangy/rangy-classapplier.min.js"></script>
+
+  <script src="../bower_components/moment/moment.js"></script>
+  <script src="../bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+  <script src="../bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+  <script src="../bower_components/gm.datepickerMultiSelect/dist/gm.datepickerMultiSelect.min.js"></script>
+  <script src="../bower_components/video.js/dist/video.js"></script>
+  <script src="../bower_components/vjs-video/app/scripts/directives/vjs.directive.js"></script>
+  <script src="../bower_components/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.min.js"></script>
+  <script src="../bower_components/angular-faye/build/angular-faye.js"></script>
+  <script src="../bower_components/angular-svg-base-fix/src/svgBaseFix.js"></script>
+  <script src="../bower_components/ui-router-metatags/dist/ui-router-metatags.min.js"></script>
+
+  <script src="../lib/emoji-picker/js/nanoscroller.min.js"></script>
+  <script src="../lib/emoji-picker/js/tether.min.js"></script>
+  <script src="../lib/emoji-picker/js/config.js"></script>
+  <script src="../lib/emoji-picker/js/util.js"></script>
+  <script src="../lib/emoji-picker/js/jquery.emojiarea.js"></script>
+  <script src="../lib/emoji-picker/js/emoji-picker.js"></script>
+
+
+  <script type="text/javascript" src="../app/app.js"></script>
+  <script type="text/javascript" src="../app/constants.js"></script>
+  <script type="text/javascript" src="../app/routes.js"></script>
+  <script type="text/javascript-faye"></script>
+  <script type="text/javascript" src="../app/components/services/path.provider.js"></script>
+  <script type="text/javascript" src="../app/components/services/Alerts.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/LocalStorage.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/QueryService.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/ErrorsHandler.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/session.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/currentUser.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/Content.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/AutentificationService.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/h.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/FSM.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/helperService.js"></script>
+  <script type="text/javascript" src="../app/components/services/PublicModal.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/sterling.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/SmartChanking.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/anchorSmoothScroll.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/instagramImageThumbService.js"></script>
+  <script type="text/javascript" src="../app/components/services/feedbackService.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/AdvertInfluencerService.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/PublisherModal.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/GooglePlaceParser.js"></script>
+  <script type="text/javascript" src="../app/components/services/uploadAdvertImages.service.js"></script>
+  <script type="text/javascript" src="../app/components/services/Credits.service.js"></script>
+
+  <script type="text/javascript" src="../app/components/resources/factories/Base.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/BankAccount.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Chatroom.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Influencer.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Referal.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Swad.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/User.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Application.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Booking.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Publisher.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/faye.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/influencerOwnership.js"></script>
+  <script type="text/javascript" src="../app/components/resources/factories/Job.js"></script>
+
+  <script type="text/javascript" src="../app/components/resources/services/Base.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Chatrooms.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Influencers.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Chatrooms.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Swads.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Referrals.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Settings.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Favourites.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Jobs.js"></script>
+  <script type="text/javascript" src="../app/components/resources/services/Publishers.js"></script>
+
+  <script type="text/javascript" src="../app/components/directives/alerts.js"></script>
+  <script type="text/javascript" src="../app/components/directives/b-slider.js"></script>
+  <script type="text/javascript" src="../app/components/directives/partial.js"></script>
+  <script type="text/javascript" src="../app/components/directives/datepicker.js"></script>
+  <script type="text/javascript" src="../app/components/directives/custom-select.js"></script>
+  <script type="text/javascript" src="../app/components/directives/custom-checkbox.js"></script>
+  <script type="text/javascript" src="../app/components/directives/angular-loadscript.js"></script>
+  <script type="text/javascript" src="../app/components/directives/swayy-footer.js"></script>
+  <script type="text/javascript" src="../app/components/directives/inf-swad.js"></script>
+  <script type="text/javascript" src="../app/components/directives/swad.js"></script>
+  <script type="text/javascript" src="../app/components/directives/emoji-messages-area.js"></script>
+  <script type="text/javascript" src="../app/components/directives/form-group.js"></script>
+  <script type="text/javascript" src="../app/components/directives/fg-radio-group.js"></script>
+  <script type="text/javascript" src="../app/components/directives/fg-radio.js"></script>
+  <script type="text/javascript" src="../app/components/directives/dropdown.js"></script>
+  <script type="text/javascript" src="../app/components/directives/dropdown-item.js"></script>
+  <script type="text/javascript" src="../app/components/directives/fg-phone.js"></script>
+  <script type="text/javascript" src="../app/components/directives/fg-checkbox.js"></script>
+  <script type="text/javascript" src="../app/components/directives/loading.js"></script>
+  <script type="text/javascript" src="../app/components/directives/submit.js"></script>
+  <script type="text/javascript" src="../app/components/directives/svg-cxlink.js"></script>
+  <script type="text/javascript" src="../app/components/directives/select-box.js"></script>
+  <script type="text/javascript" src="../app/components/directives/bgimg.js"></script>
+  <script type="text/javascript" src="../app/components/directives/modal-dialog-child.js"></script>
+  <script type="text/javascript" src="../app/components/directives/password-confirmation.js"></script>
+  <script type="text/javascript" src="../app/components/directives/tooltip.js"></script>
+  <script type="text/javascript" src="../app/components/directives/smart-chunking.js"></script>
+
+  <script type="text/javascript" src="../app/components/filters/underscoreless.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/capitalize.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/emoji.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/k.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/totime.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/floor.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/followersLabel.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/toYesNo.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/datesToStr.filter.js"></script>
+  <script type="text/javascript" src="../app/components/filters/avatar.filter.js"></script>
+
+  <script type="text/javascript" src="../app/controllers/AdsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/ContactModalController.js"></script>
+  <script type="text/javascript" src="../app/controllers/ModalInstanceController.js"></script>
+  <script type="text/javascript" src="../app/controllers/login/LoginController.js"></script>
+  <script type="text/javascript" src="../app/controllers/login/ForgotPasswordController.js"></script>
+  <script type="text/javascript" src="../app/controllers/MapController.js"></script>
+  <script type="text/javascript" src="../app/controllers/signUp/SignupInfluencerController.js"></script>
+  <script type="text/javascript" src="../app/controllers/signUp/SignupLbController.js"></script>
+  <script type="text/javascript" src="../app/controllers/about/AboutController.js"></script>
+  <script type="text/javascript" src="../app/controllers/InfluencerController.js"></script>
+  <script type="text/javascript" src="../app/controllers/PublisherController.js"></script>
+  <script type="text/javascript" src="../app/controllers/PublisherProfileController.js"></script>
+  <script type="text/javascript" src="../app/controllers/UserController.js"></script>
+  <script type="text/javascript" src="../app/controllers/RegisterOwnershipController.js"></script>
+  <script type="text/javascript" src="../app/controllers/VenuesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/PaymentController.js"></script>
+  <script type="text/javascript" src="../app/controllers/JobsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/PagesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/AdminPublisherController.js"></script>
+
+  <script type="text/javascript" src="../app/controllers/StaticPagesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/MessagesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/InviteToJobController.js"></script>
+  <script type="text/javascript" src="../app/controllers/MessageJobController.js"></script>
+  <script type="text/javascript" src="../app/controllers/PressesController.js"></script>
+
+  <script type="text/javascript" src="../app/controllers/profile/ReferralsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/CopyrightController.js"></script>
+
+  <script type="text/javascript" src="../app/controllers/HomeController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/BankAccountController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/SavedSearchesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/AdvertInfluencerController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/InfluencerFeedbackModalInstanceController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/FavouritesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/BookingHistoryController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/modals/BookingHistoryModals.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/modals/ModalAdvertDetailsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/modals/InfluencerKeyContactsModalInstanceController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/modals/ModalBookingCreatedController.js"></script>
+  <script type="text/javascript" src="../app/controllers/influencer/modals/BankAccountInstanceController.js"></script>
+
+  <script type="text/javascript" src="../app/controllers/signUp/SignUpModalController.js"></script>
+  <script type="text/javascript" src="../app/controllers/ModalControllers.js"></script>
+  <script type="text/javascript" src="../app/controllers/login/ResetPasswordController.js"></script>
+  <script type="text/javascript" src="../app/controllers/ContactController.js"></script>
+  <script type="text/javascript" src="../app/controllers/SupportController.js"></script>
+  <script type="text/javascript" src="../app/controllers/TermController.js"></script>
+  <script type="text/javascript" src="../app/controllers/LbInfoController.js"></script>
+  <script type="text/javascript" src="../app/controllers/TransactionsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/about/PrinciplesController.js"></script>
+  <script type="text/javascript" src="../app/controllers/about/PressController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/ManageAdsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/InfluencersController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/PublisherPackageController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalInfluencerController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalDeleteAdController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalPromoteAdController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/ApplicationsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalAcceptAppController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalNoCreditsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalConfirmationController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalBuyCreditsController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/FeedbackModalInstanceController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalUpdateAdController.js"></script>
+  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalUpgradeAdController.js"></script>
+
+  <!-- templates from $templateCache -->
+  <!-- build:templates -->
+  <!-- endbuild -->
+
+  <!-- endbuild -->
+
+
+</html>

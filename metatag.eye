@@ -12,7 +12,7 @@ process :sinatra do
     pid_file "/tmp/sinatra.pid"
     stdall "/home/ubuntu/smg_metatags/log/sinatra.log"
 
-    start_command "/usr/bin/ruby"
+    start_command "/usr/bin/ruby index.rb"
     stop_signals [:TERM, 5.seconds, :KILL]
     restart_command 'kill -9 {PID}'
 

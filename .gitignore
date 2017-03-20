@@ -1,0 +1,27 @@
+/.bundle
+/log/*
+!/log/.keep
+/tmp
+config/database.yml
+#robots.txt
+public/robots.txt
+# Sublime
+*.sublime-workspace
+
+# RubyMine
+.idea
+
+# Rubocop config
+/.rubocop.yml
+
+coverage
+#Dump
+dump.psql
+
+# .rbenv
+/.ruby-version
+/.ruby-gemset
+
+.env
+.byebug_history
+public/system

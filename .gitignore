@@ -25,3 +25,4 @@ dump.psql
 .env
 .byebug_history
 public/system
+.idea

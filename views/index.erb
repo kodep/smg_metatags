@@ -28,8 +28,7 @@
 
     <!-- CSS -->
 
-    <!-- build:cssLibs css/libs.min.css -->
-    <!-- endbuild -->
+    
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -47,24 +46,11 @@
     </div>
 
 
-      <!-- build:cssApplicationOld css/application-old.min.css-->
-      <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
-      <link rel="stylesheet" href="../app/styles/application.css">
-
-
-    <div ng-if="currentUser()">
-      <link rel="stylesheet" href="../bower_components/angular-ui-select/dist/select.min.css">
-      <link rel="stylesheet" href="../bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
-      <link rel="stylesheet" href="../lib/emoji-picker/css/nanoscroller.css" >
-      <link rel="stylesheet" href="../lib/emoji-picker/css/emoji.css" >
-      <!-- endbuild -->
+      <link rel="stylesheet" href="css/application-old.min.css"/>
     </div>
 
     <div ng-if="!currentUser()">
-      <!-- build:cssApplicationNew css/application-new.min.css-->
-<!--       <link rel="stylesheet" href="app/styles/static_pages/application.css"> -->
-      <link rel="stylesheet" href="../bower_components/video.js/dist/video-js.css" />
-      <!-- endbuild -->
+      <link rel="stylesheet" href="css/application-new.min.css"/>
     </div>
     <div ng-init="getUser()">
       <div class="page-wrapper" >
@@ -269,222 +255,7 @@
   </body>
 
   <!-- Angular components -->
-  <!-- build:appcomponents js/appcomponents.js -->
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="../bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
-  <script src="../bower_components/angular-animate/angular-animate.js"></script>
-  <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="../bower_components/angularjs-google-maps/build/scripts/ng-map.js"></script>
-  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <!-- <script src="bower_components/ng-maps/dist/map.js"></script> -->
-  <script src="../bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-
-  <script src="../bower_components/ng-file-upload/ng-file-upload.min.js"></script>
-  <script src="../bower_components/checklist-model/checklist-model.js"></script>
-  <script src="../bower_components/lodash/lodash.js"></script>
-  <script src="../bower_components/angular-truncate/src/truncate.js"></script>
-
-  <script src="../bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
-  <script src="../bower_components/angular-ui-select/dist/select.js"></script>
-  <script src="../bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
-
-
-  <script src="../bower_components/jQuery/dist/jquery.min.js"></script>
-  <script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-  <script src="../bower_components/pluralize/pluralize.js"></script>
-  <script src="../bower_components/humps/humps.js"></script>
-  <script src="../bower_components/angular-scroll-glue/src/scrollglue.js"></script>
-
-  <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-  <script src="../bower_components/angular-inline-text-editor/ite.js"></script>
-  <script src="../bower_components/rangy/rangy-core.min.js"></script>
-  <script src="../bower_components/rangy/rangy-selectionsaverestore.min.js"></script>
-  <script src="../bower_components/rangy/rangy-classapplier.min.js"></script>
-
-  <script src="../bower_components/moment/moment.js"></script>
-  <script src="../bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
-  <script src="../bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
-  <script src="../bower_components/gm.datepickerMultiSelect/dist/gm.datepickerMultiSelect.min.js"></script>
-  <script src="../bower_components/video.js/dist/video.js"></script>
-  <script src="../bower_components/vjs-video/app/scripts/directives/vjs.directive.js"></script>
-  <script src="../bower_components/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.min.js"></script>
-  <script src="../bower_components/angular-faye/build/angular-faye.js"></script>
-  <script src="../bower_components/angular-svg-base-fix/src/svgBaseFix.js"></script>
-  <script src="../bower_components/ui-router-metatags/dist/ui-router-metatags.min.js"></script>
-
-  <script src="../lib/emoji-picker/js/nanoscroller.min.js"></script>
-  <script src="../lib/emoji-picker/js/tether.min.js"></script>
-  <script src="../lib/emoji-picker/js/config.js"></script>
-  <script src="../lib/emoji-picker/js/util.js"></script>
-  <script src="../lib/emoji-picker/js/jquery.emojiarea.js"></script>
-  <script src="../lib/emoji-picker/js/emoji-picker.js"></script>
-
-
-  <script type="text/javascript" src="../app/app.js"></script>
-  <script type="text/javascript" src="../app/constants.js"></script>
-  <script type="text/javascript" src="../app/routes.js"></script>
-  <script type="text/javascript-faye"></script>
-  <script type="text/javascript" src="../app/components/services/path.provider.js"></script>
-  <script type="text/javascript" src="../app/components/services/Alerts.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/LocalStorage.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/QueryService.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/ErrorsHandler.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/session.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/currentUser.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/Content.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/AutentificationService.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/h.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/FSM.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/helperService.js"></script>
-  <script type="text/javascript" src="../app/components/services/PublicModal.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/sterling.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/SmartChanking.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/anchorSmoothScroll.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/instagramImageThumbService.js"></script>
-  <script type="text/javascript" src="../app/components/services/feedbackService.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/AdvertInfluencerService.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/PublisherModal.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/GooglePlaceParser.js"></script>
-  <script type="text/javascript" src="../app/components/services/uploadAdvertImages.service.js"></script>
-  <script type="text/javascript" src="../app/components/services/Credits.service.js"></script>
-
-  <script type="text/javascript" src="../app/components/resources/factories/Base.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/BankAccount.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Chatroom.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Influencer.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Referal.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Swad.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/User.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Application.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Booking.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Publisher.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/faye.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/influencerOwnership.js"></script>
-  <script type="text/javascript" src="../app/components/resources/factories/Job.js"></script>
-
-  <script type="text/javascript" src="../app/components/resources/services/Base.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Chatrooms.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Influencers.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Chatrooms.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Swads.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Referrals.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Settings.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Favourites.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Jobs.js"></script>
-  <script type="text/javascript" src="../app/components/resources/services/Publishers.js"></script>
-
-  <script type="text/javascript" src="../app/components/directives/alerts.js"></script>
-  <script type="text/javascript" src="../app/components/directives/b-slider.js"></script>
-  <script type="text/javascript" src="../app/components/directives/partial.js"></script>
-  <script type="text/javascript" src="../app/components/directives/datepicker.js"></script>
-  <script type="text/javascript" src="../app/components/directives/custom-select.js"></script>
-  <script type="text/javascript" src="../app/components/directives/custom-checkbox.js"></script>
-  <script type="text/javascript" src="../app/components/directives/angular-loadscript.js"></script>
-  <script type="text/javascript" src="../app/components/directives/swayy-footer.js"></script>
-  <script type="text/javascript" src="../app/components/directives/inf-swad.js"></script>
-  <script type="text/javascript" src="../app/components/directives/swad.js"></script>
-  <script type="text/javascript" src="../app/components/directives/emoji-messages-area.js"></script>
-  <script type="text/javascript" src="../app/components/directives/form-group.js"></script>
-  <script type="text/javascript" src="../app/components/directives/fg-radio-group.js"></script>
-  <script type="text/javascript" src="../app/components/directives/fg-radio.js"></script>
-  <script type="text/javascript" src="../app/components/directives/dropdown.js"></script>
-  <script type="text/javascript" src="../app/components/directives/dropdown-item.js"></script>
-  <script type="text/javascript" src="../app/components/directives/fg-phone.js"></script>
-  <script type="text/javascript" src="../app/components/directives/fg-checkbox.js"></script>
-  <script type="text/javascript" src="../app/components/directives/loading.js"></script>
-  <script type="text/javascript" src="../app/components/directives/submit.js"></script>
-  <script type="text/javascript" src="../app/components/directives/svg-cxlink.js"></script>
-  <script type="text/javascript" src="../app/components/directives/select-box.js"></script>
-  <script type="text/javascript" src="../app/components/directives/bgimg.js"></script>
-  <script type="text/javascript" src="../app/components/directives/modal-dialog-child.js"></script>
-  <script type="text/javascript" src="../app/components/directives/password-confirmation.js"></script>
-  <script type="text/javascript" src="../app/components/directives/tooltip.js"></script>
-  <script type="text/javascript" src="../app/components/directives/smart-chunking.js"></script>
-
-  <script type="text/javascript" src="../app/components/filters/underscoreless.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/capitalize.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/emoji.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/k.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/totime.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/floor.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/followersLabel.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/toYesNo.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/datesToStr.filter.js"></script>
-  <script type="text/javascript" src="../app/components/filters/avatar.filter.js"></script>
-
-  <script type="text/javascript" src="../app/controllers/AdsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/ContactModalController.js"></script>
-  <script type="text/javascript" src="../app/controllers/ModalInstanceController.js"></script>
-  <script type="text/javascript" src="../app/controllers/login/LoginController.js"></script>
-  <script type="text/javascript" src="../app/controllers/login/ForgotPasswordController.js"></script>
-  <script type="text/javascript" src="../app/controllers/MapController.js"></script>
-  <script type="text/javascript" src="../app/controllers/signUp/SignupInfluencerController.js"></script>
-  <script type="text/javascript" src="../app/controllers/signUp/SignupLbController.js"></script>
-  <script type="text/javascript" src="../app/controllers/about/AboutController.js"></script>
-  <script type="text/javascript" src="../app/controllers/InfluencerController.js"></script>
-  <script type="text/javascript" src="../app/controllers/PublisherController.js"></script>
-  <script type="text/javascript" src="../app/controllers/PublisherProfileController.js"></script>
-  <script type="text/javascript" src="../app/controllers/UserController.js"></script>
-  <script type="text/javascript" src="../app/controllers/RegisterOwnershipController.js"></script>
-  <script type="text/javascript" src="../app/controllers/VenuesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/PaymentController.js"></script>
-  <script type="text/javascript" src="../app/controllers/JobsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/PagesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/AdminPublisherController.js"></script>
-
-  <script type="text/javascript" src="../app/controllers/StaticPagesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/MessagesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/InviteToJobController.js"></script>
-  <script type="text/javascript" src="../app/controllers/MessageJobController.js"></script>
-  <script type="text/javascript" src="../app/controllers/PressesController.js"></script>
-
-  <script type="text/javascript" src="../app/controllers/profile/ReferralsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/CopyrightController.js"></script>
-
-  <script type="text/javascript" src="../app/controllers/HomeController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/BankAccountController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/SavedSearchesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/AdvertInfluencerController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/InfluencerFeedbackModalInstanceController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/FavouritesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/BookingHistoryController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/modals/BookingHistoryModals.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/modals/ModalAdvertDetailsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/modals/InfluencerKeyContactsModalInstanceController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/modals/ModalBookingCreatedController.js"></script>
-  <script type="text/javascript" src="../app/controllers/influencer/modals/BankAccountInstanceController.js"></script>
-
-  <script type="text/javascript" src="../app/controllers/signUp/SignUpModalController.js"></script>
-  <script type="text/javascript" src="../app/controllers/ModalControllers.js"></script>
-  <script type="text/javascript" src="../app/controllers/login/ResetPasswordController.js"></script>
-  <script type="text/javascript" src="../app/controllers/ContactController.js"></script>
-  <script type="text/javascript" src="../app/controllers/SupportController.js"></script>
-  <script type="text/javascript" src="../app/controllers/TermController.js"></script>
-  <script type="text/javascript" src="../app/controllers/LbInfoController.js"></script>
-  <script type="text/javascript" src="../app/controllers/TransactionsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/about/PrinciplesController.js"></script>
-  <script type="text/javascript" src="../app/controllers/about/PressController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/ManageAdsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/InfluencersController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/PublisherPackageController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalInfluencerController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalDeleteAdController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalPromoteAdController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/ApplicationsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalAcceptAppController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalNoCreditsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalConfirmationController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalBuyCreditsController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/FeedbackModalInstanceController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalUpdateAdController.js"></script>
-  <script type="text/javascript" src="../app/controllers/publisher/modals/ModalUpgradeAdController.js"></script>
-
-  <!-- templates from $templateCache -->
-  <!-- build:templates -->
-  <!-- endbuild -->
-
-  <!-- endbuild -->
+  <script src="js/appcomponents.js"></script>
 
 
 </html>

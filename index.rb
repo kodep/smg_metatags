@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'bundler/setup'
-
 Bundler.require(:default)
 
 require 'yaml'
@@ -16,6 +15,22 @@ routes_info.each do |route, info|
   end
 end
 
+get "/support" do
+  case params[:direct_link]
+    when "general"
+      @title = routes_info["support/general"]["Title"]
+      @description = routes_info["support/general"]["Description"]
+      erb :'index'
+    when "publishers"
+      @title = routes_info["support/publishers"]["Title"]
+      @description = routes_info["support/publishers"]["Description"]
+      erb :'index'
+    when "influencers"
+      @title = routes_info["support/influencers"]["Title"]
+      @description = routes_info["support/influencers"]["Description"]
+      erb :'index'
+  end
+end
 
 get '/*' do
   @title = 'SWAYY | Targeted Influencer Marketing for Hotels & Restaurants'

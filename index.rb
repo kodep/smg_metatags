@@ -34,7 +34,7 @@ end
 
 get '/*' do
   @title = 'SWAYY | Targeted Influencer Marketing for Hotels & Restaurants'
-  @description = 'Swayy is the world is first hotel and restaurant booking site for digital Influencers. Swayy helps Leisure Businesses increase sales and brand awareness through effective Influencer Marketing.'
+  @description = "Swayy is the world's first hotel and restaurant booking site for digital Influencers. Swayy helps Leisure Businesses increase sales and brand awareness through effective Influencer Marketing."
   erb :'index'
 end
 

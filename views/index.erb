@@ -50,6 +50,13 @@
       ga('send', 'pageview');
 
     </script>
+    <!--  Crazy Egg tracking -->
+    <script type="text/javascript">
+      setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0069/4462.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
   </head>
   <body ng-controller="UserController" ng-class=" currentUser() ? 'inner_pages_body' : 'public_page_body'">
     <div class="loader-wrapper" ng-class=" showDownload ? '' : 'hidden'">

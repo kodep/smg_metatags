@@ -4,6 +4,10 @@ Bundler.require(:default)
 
 require 'yaml'
 
+configure do
+  set :protection, :except => :frame_options
+end
+
 routes_info = YAML.load(File.read('meta_tag_content.yaml'))
 
 routes_info.each do |route, info|

@@ -3,7 +3,7 @@ Eye.config do
 end
 
 Eye.application :metatags do
-  working_dir "/home/ubuntu/smg_metatags"
+  working_dir "/home/ubuntu/smg_metatags/current"
   trigger :flapping, :times => 10, :within => 1.minute
   env 'RACK_ENV' => 'production'
 
@@ -12,7 +12,7 @@ process :sinatra do
     pid_file "/tmp/sinatra.pid"
     stdall "/home/ubuntu/smg_metatags/shared/log/sinatra.log"
 
-    start_command "/usr/bin/ruby index.rb"
+    start_command "rvm use 2.3.0 do bundle exec ruby index.rb"
     stop_signals [:TERM, 5.seconds, :KILL]
     restart_command 'kill -9 {PID}'
 

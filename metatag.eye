@@ -1,5 +1,5 @@
 Eye.config do
-  logger "/home/ubuntu/smg_metatags/log/eye.log"
+  logger "/home/ubuntu/smg_metatags/shared/log/eye.log"
 end
 
 Eye.application :metatags do

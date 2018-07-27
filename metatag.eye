@@ -10,7 +10,7 @@ Eye.application :metatags do
 process :sinatra do
     daemonize true
     pid_file "/tmp/sinatra.pid"
-    stdall "/home/ubuntu/smg_metatags/log/sinatra.log"
+    stdall "/home/ubuntu/smg_metatags/shared/log/sinatra.log"
 
     start_command "/usr/bin/ruby index.rb"
     stop_signals [:TERM, 5.seconds, :KILL]

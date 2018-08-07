@@ -10,7 +10,7 @@ end
 
 routes_info = YAML.load(File.read('meta_tag_content.yaml'))
 
-def find_hashed_js
+def find_hashed_js # TODO: Now name of appcomponents file is taken from ENV. Delete this code if everything will be stable and on production.
   js_filename = `find /home/deployer/smg_frontend/js -name "appcomponents*.js" | sed 's#.*/##'`
   js_filename = `find /home/ubuntu/html/js -name "appcomponents*.js" | sed 's#.*/##'` if js_filename.strip == ''
   puts "JS_FILENAME: #{js_filename}"
@@ -23,13 +23,13 @@ routes_info.each do |route, info|
     info = routes_info[[route, params[:direct_link]].join('/')] if params[:direct_link]
     @title = info['Title']
     @description = info['Description']
-    @js_filename = find_hashed_js
+    @js_filename = ENV['APP_FILE_NAME']
     erb :'index'
   end
 end
 
 get "/support" do
-  @js_filename = find_hashed_js
+  @js_filename = ENV['APP_FILE_NAME']
   case params[:direct_link]
     when "general"
       @title = routes_info["support/general"]["Title"]
@@ -49,6 +49,6 @@ end
 get '/*' do
   @title = 'SWAYY | Targeted Influencer Marketing for Hotels & Restaurants'
   @description = "Swayy is the world's first hotel and restaurant booking site for digital Influencers. Swayy helps Leisure Businesses increase sales and brand awareness through effective Influencer Marketing."
-  @js_filename = find_hashed_js
+  @js_filename = ENV['APP_FILE_NAME']
   erb :'index'
 end
